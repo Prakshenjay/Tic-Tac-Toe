@@ -12,7 +12,7 @@ string Player2;
 int Score1 = 0;
 int Score2 = 0;
 
-char CurrentMarker = 'X';
+char CurrentMarker;
 
 void print_instructions()
 {
@@ -52,6 +52,8 @@ void initialise()
             Board[i][j] = ' ';
         }
     }
+
+    char CurrentMarker = 'X';
 }
 
 void switch_current_marker()
@@ -99,16 +101,70 @@ void player_move()
     }
 }
 
-int MiniMax()
-{
-    
+int game_over();
+bool check_tie();
+char check_rows();
+char check_columns();
+char check_diagonals();
 
-    return 1;
+int MiniMax(int depth , bool isMaximizing)
+{
+    if( game_over() )
+    {
+        if( check_rows() == 'X' || check_columns() == 'X' || check_diagonals() == 'X' )
+        {
+            return -1;
+        }
+        else if( check_rows() == 'O' || check_columns() == 'O' || check_diagonals() == 'O' )
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else if( isMaximizing )
+    {
+        int BestScore = -10000;
+        for(int i = 0 ; i < 3 ; i++)
+        {
+            for(int j = 0 ; j < 3 ; j++)
+            {
+                if(Board[i][j] == ' ')
+                {
+                    Board[i][j] = 'O';
+                    int score  = MiniMax(depth + 1 , false);
+                    Board[i][j] = ' ';
+                    BestScore = max( score , BestScore );
+                }
+            }
+        }
+        return BestScore;
+    }
+    else
+    {
+        int BestScore = 10000;
+        for(int i = 0 ; i < 3 ; i++)
+        {
+            for(int j = 0 ; j < 3 ; j++)
+            {
+                if(Board[i][j] == ' ')
+                {
+                    Board[i][j] = 'X';
+                    int score  = MiniMax(depth + 1 , true);
+                    Board[i][j] = ' ';
+                    BestScore = min( score , BestScore );
+                }
+            }
+        }
+        return BestScore;
+    }
 }
 
 void computer_move()
 {
-    int BestScore = -1;
+    int BestScore = -10000;
     int BestMove[2];
 
     for(int i = 0 ; i < 3 ; i++)
@@ -118,7 +174,7 @@ void computer_move()
             if(Board[i][j] == ' ')
             {
                 Board[i][j] = CurrentMarker;
-                int score  = MiniMax();
+                int score  = MiniMax(0 , false);
                 Board[i][j] = ' ';
                 if(score > BestScore)
                 {
@@ -132,7 +188,7 @@ void computer_move()
     Board[ BestMove[0] ][ BestMove[1] ] = CurrentMarker;
 }
 
-bool check_rows()
+char check_rows()
 {
     for (int i = 0; i < 3; i++)
     {
@@ -140,13 +196,13 @@ bool check_rows()
             Board[i][1] == Board[i][2] &&
             Board[i][0] != ' ')
         {
-            return (true);
+            return (Board[i][0]);
         }
     }
-    return (false);
+    return 0;
 }
 
-bool check_columns()
+char check_columns()
 {
     for (int i = 0; i < 3; i++)
     {
@@ -154,27 +210,27 @@ bool check_columns()
             Board[1][i] == Board[2][i] &&
             Board[0][i] != ' ')
         {
-            return (true);
+            return (Board[0][i]);
         }
     }
-    return (false);
+    return (0);
 }
 
-bool check_diagonals()
+char check_diagonals()
 {
     if (Board[0][0] == Board[1][1] &&
         Board[1][1] == Board[2][2] &&
         Board[0][0] != ' ')
     {
-        return (true);
+        return (Board[1][1]);
     }
     if (Board[0][2] == Board[1][1] &&
         Board[1][1] == Board[2][0] &&
         Board[2][0] != ' ')
     {
-        return (true);
+        return (Board[1][1]);
     }
-    return (false);
+    return (0);
 }
 
 bool check_tie()
@@ -198,7 +254,7 @@ bool check_tie()
 
 int game_over()
 {
-    if ( check_rows() || check_columns() || check_diagonals() || check_tie() )
+    if ( check_rows() != 0 || check_columns() != 0 || check_diagonals() != 0 || check_tie() )
     {
         return 1;
     }
@@ -338,6 +394,7 @@ void startup()
 {
     int ch;
 
+    system("clear");
     cout << "\n";
     cout << "\t\t WELCOME TO TIC-TAC-TOE\n\n";
 

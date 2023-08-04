@@ -15,7 +15,7 @@
 <br><hr><br>
 
 <p align="center">
-  <img src="" height = "400px" width = "600px">
+  <img src="images/screen.png" height = "400px" width = "600px">
 </p>
 
 <br><hr><br>

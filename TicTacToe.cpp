@@ -1,4 +1,6 @@
 #include <iostream>
+#include <conio.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -57,7 +59,9 @@ void Startup()
 {
     int ch;
 
-    system("clear");
+    //system("clear");
+    system("cls");
+
     cout << "\n";
     cout << "\t\t WELCOME TO TIC-TAC-TOE\n\n";
 
@@ -118,7 +122,8 @@ void Print_Instructions()
 
 void Play_game()
 {
-    system("clear");
+    //system("clear");
+    system("cls");
 
     Initialise();
 
@@ -134,7 +139,9 @@ void Play_game()
             break;
         }
 
-        system("clear");
+        //system("clear");
+        system("cls");
+
         switch_current_marker();
 
         if (NumberOfPlayers == 1)
@@ -147,7 +154,9 @@ void Play_game()
                 break;
             }
 
-            system("clear");
+            //system("clear");
+            system("cls");
+
             switch_current_marker();
         }
     }
@@ -183,6 +192,7 @@ void Player_Move()
     while (1)
     {
         int pos;
+pos:;
         cout << "\nEnter Position(1-9) : " ;
         cin >> pos;
 
@@ -199,6 +209,7 @@ void Player_Move()
         case 9 : x = 2 ;  y = 2 ; break;
         default:
                 cout << "Invalid Input\n";
+                goto pos;
                 break;
         }
 
@@ -385,7 +396,8 @@ bool Check_Tie()
 
 void declare_winner()
 {
-    system("clear");
+    //system("clear");
+    system("cls");
 
     cout << endl << "\t\t GAME - OVER \n";
     Print_Board();
@@ -435,9 +447,9 @@ void print_score()
     cout << endl;
 
     cout << "\t-----------------------------------------" << endl;
-    cout << "\t|\t" << Player1 << "\t|\t" << Score1 << "\t|" << endl;
+    cout << "\t|\t" ; cout << setw(11) << Player1 ; cout << "\t|\t" << Score1 << "\t|" << endl;
     cout << "\t-----------------------------------------" << endl;
-    cout << "\t|\t" << Player2 << "\t|\t" << Score2 << "\t|" << endl;
+    cout << "\t|\t" ; cout << setw(11) << Player2 ; cout << "\t|\t" << Score2 << "\t|" << endl;
     cout << "\t-----------------------------------------" << endl;
 }
 

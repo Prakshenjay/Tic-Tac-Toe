@@ -179,11 +179,17 @@ void Print_Board()
 {
     cout << "\n\n";
 
-    cout << "\t\t " << Board[0][0] << " | " << Board[0][1] << " | " << Board[0][2] << " \n";
-    cout << "\t\t-----------\n";
-    cout << "\t\t " << Board[1][0] << " | " << Board[1][1] << " | " << Board[1][2] << " \n";
-    cout << "\t\t-----------\n";
-    cout << "\t\t " << Board[2][0] << " | " << Board[2][1] << " | " << Board[2][2] << " \n";
+    cout << "\t\t     |     |\n";
+    cout << "\t\t  " << Board[0][0] << "  |  " << Board[0][1] << "  |  " << Board[0][2] << " \n";
+    cout << "\t\t     |     |\n";
+    cout << "\t\t-----------------\n";
+    cout << "\t\t     |     |\n";
+    cout << "\t\t  " << Board[1][0] << "  |  " << Board[1][1] << "  |  " << Board[1][2] << " \n";
+    cout << "\t\t     |     |\n";
+    cout << "\t\t-----------------\n";
+    cout << "\t\t     |     |\n";
+    cout << "\t\t  " << Board[2][0] << "  |  " << Board[2][1] << "  |  " << Board[2][2] << " \n";
+    cout << "\t\t     |     |\n";
 }
 
 void Player_Move()
@@ -399,7 +405,7 @@ void declare_winner()
     //system("clear");
     system("cls");
 
-    cout << endl << "\t\t GAME - OVER \n";
+    cout << endl << "\t\t   GAME - OVER \n";
     Print_Board();
 
     if( Check_Tie() )

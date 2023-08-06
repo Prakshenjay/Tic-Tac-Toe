@@ -179,17 +179,17 @@ void Print_Board()
 {
     cout << "\n\n";
 
-    cout << "\t\t     |     |\n";
-    cout << "\t\t  " << Board[0][0] << "  |  " << Board[0][1] << "  |  " << Board[0][2] << " \n";
-    cout << "\t\t     |     |\n";
-    cout << "\t\t-----------------\n";
-    cout << "\t\t     |     |\n";
-    cout << "\t\t  " << Board[1][0] << "  |  " << Board[1][1] << "  |  " << Board[1][2] << " \n";
-    cout << "\t\t     |     |\n";
-    cout << "\t\t-----------------\n";
-    cout << "\t\t     |     |\n";
-    cout << "\t\t  " << Board[2][0] << "  |  " << Board[2][1] << "  |  " << Board[2][2] << " \n";
-    cout << "\t\t     |     |\n";
+    cout << "\t\t       |       |\n"; 
+    cout << "\t\t   " << Board[0][0] << "   |   " << Board[0][1] << "   |   " << Board[0][2] << "\n";
+    cout << "\t\t       |       |\n";
+    cout << "\t\t-----------------------\n";
+    cout << "\t\t       |       |\n";
+    cout << "\t\t   " << Board[1][0] << "   |   " << Board[1][1] << "   |   " << Board[1][2] << "\n";
+    cout << "\t\t       |       |\n";
+    cout << "\t\t-----------------------\n";
+    cout << "\t\t       |       |\n";
+    cout << "\t\t   " << Board[2][0] << "   |   " << Board[2][1] << "   |   " << Board[2][2] << "\n";
+    cout << "\t\t       |       |\n";
 }
 
 void Player_Move()
@@ -453,9 +453,9 @@ void print_score()
     cout << endl;
 
     cout << "\t-----------------------------------------" << endl;
-    cout << "\t|\t" ; cout << setw(11) << Player1 ; cout << "\t|\t" << Score1 << "\t|" << endl;
+    cout << "\t|\t" ; cout << setw(11) << left << Player1 ; cout << "\t|\t" << Score1 << "\t|" << endl;
     cout << "\t-----------------------------------------" << endl;
-    cout << "\t|\t" ; cout << setw(11) << Player2 ; cout << "\t|\t" << Score2 << "\t|" << endl;
+    cout << "\t|\t" ; cout << setw(11) << left << Player2 ; cout << "\t|\t" << Score2 << "\t|" << endl;
     cout << "\t-----------------------------------------" << endl;
 }
 
